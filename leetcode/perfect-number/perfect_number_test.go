@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"fmt"
+	"log"
 	"testing"
 )
 
@@ -42,12 +43,15 @@ func Test_perfectNumber(t *testing.T) {
 		},
 		{
 			parameter{27},
-			result{true},
+			result{false},
 		},
 	}
 
 	for _, q := range qs {
-		_, p := q.result, q.parameter
-		fmt.Printf("Input: %v, Output: %v\n", p, checkPerfectNumber(p.num))
+		r, p := q.result, q.parameter
+		fmt.Printf("Input: %v, Output: %v, Expected: %v\n", p.num, checkPerfectNumber(p.num), r.res)
+		if checkPerfectNumber(p.num) != r.res {
+			log.Fatalf("testing failed: expected: %v", r.res)
+		}
 	}
 }
