@@ -2,13 +2,21 @@ ifneq (,)
 .error This Makefile requires GNU Make.
 endif
 
+GO      = go
+GOCOVER = $(GO) tool cover
+
 test:
-	go test -v -cover ./...
+	$(GO) test -v -cover ./...
 
 update:
-	go get -u -v ./...
+	$(GO) get -u -v ./...
 
 fmt:
-	go fmt ./...
+	$(GO) fmt ./...
 
-.PHONY: test update fmt
+cover_test:
+	$(GO) test -v -coverprofile=coverage.out ./...
+	$(GOCOVER) -func=coverage.out
+	$(GOCOVER) -html=coverage.out
+
+.PHONY: test update fmt cover_test
