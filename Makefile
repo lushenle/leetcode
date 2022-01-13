@@ -15,8 +15,7 @@ fmt:
 	$(GO) fmt ./...
 
 cover_test:
-	$(GO) test -v -coverprofile=coverage.out ./...
-	$(GOCOVER) -func=coverage.out
-	$(GOCOVER) -html=coverage.out
+	$(GO) test -v ./... -covermode=count -coverprofile=coverage.out
+	$(GOCOVER) -func=coverage.out -o=coverage.out
 
 .PHONY: test update fmt cover_test

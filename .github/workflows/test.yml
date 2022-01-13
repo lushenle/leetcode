@@ -24,4 +24,22 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Test
-      run: make test
+      run: make cover_test
+
+    - name: Go Coverage Badge
+      uses: tj-actions/coverage-badge-go@v1
+      with:
+        filename: coverage.out
+
+    - name: Verify Changed files
+      uses: tj-actions/verify-changed-files@v8.1
+      id: verify-changed-files
+      with:
+        files: README.md
+
+    - name: Push changes
+      if: steps.changed_files.outputs.files_changed == 'true'
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ github.token }}
+        branch: ${{ github.head_ref }}
