@@ -40,13 +40,6 @@ func Test_longestCommonPrefix(t *testing.T) {
 			want: "",
 		},
 		{
-			name: "test05",
-			args: args{
-				strs: []string{},
-			},
-			want: "",
-		},
-		{
 			name: "test06",
 			args: args{
 				strs: []string{"", "b"},
