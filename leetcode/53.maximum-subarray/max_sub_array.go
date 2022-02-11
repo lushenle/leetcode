@@ -1,11 +1,20 @@
 package leetcode
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
+//func max(a, b int) int {
+//	if a > b {
+//		return a
+//	}
+//
+//	return b
+//}
 
-	return b
+func abs(a int) int {
+	b := a >> 63
+	return (a ^ b) - b
+}
+
+func max(a int, b int) int {
+	return (a + b + abs(a-b)) / 2
 }
 
 func maxSubArray(nums []int) int {
