@@ -29,7 +29,7 @@ func singleNonDuplicate1(nums []int) int {
 			return nums[mid]
 		}
 
-		if ((mid - low) % 2) == 1 {
+		if (mid-low)%2 == 1 {
 			high = mid - 1
 		} else {
 			low = mid + 2
@@ -37,4 +37,14 @@ func singleNonDuplicate1(nums []int) int {
 	}
 
 	return -1
+}
+
+func singleNonDuplicate3(nums []int) int {
+	n := len(nums)
+	for i := 0; i < n-1; i = i + 2 {
+		if nums[i] != nums[i+1] {
+			return nums[i]
+		}
+	}
+	return nums[n-1]
 }
