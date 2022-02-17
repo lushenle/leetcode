@@ -29,4 +29,20 @@ func Test_singleNonDuplicate(t *testing.T) {
 			}
 		})
 	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := singleNonDuplicate1(tt.args.nums); got != tt.want {
+				t.Errorf("singleNonDuplicate() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := singleNonDuplicate3(tt.args.nums); got != tt.want {
+				t.Errorf("singleNonDuplicate() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }

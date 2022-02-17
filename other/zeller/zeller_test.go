@@ -12,7 +12,7 @@ func Test_zeller(t *testing.T) {
 	tests := []struct {
 		name string
 		args args
-		want float64
+		want int
 	}{
 		{
 			name: "test01",

@@ -62,3 +62,68 @@ func min(values ...int) int {
 
 	return minValue
 }
+
+func prob(N int, K int, r int, c int, steps int, dp [][][]float64) float64 {
+	x := []int{1, 2, -1, -2, 1, 2, -1, -2}
+	y := []int{2, 1, 2, 1, -2, -1, -2, -1}
+	if steps == K {
+		return 1
+	}
+	if dp[r][c][steps] > 0 {
+		return dp[r][c][steps]
+	}
+	val := 0.0
+	for i := 0; i < 8; i++ {
+		row := r + x[i]
+		col := c + y[i]
+		if row < 0 || row >= N || col < 0 || col >= N {
+			continue
+		}
+		val += float64(0.125 * prob(N, K, row, col, steps+1, dp))
+	}
+	dp[r][c][steps] = val
+	return val
+}
+
+func knightProbability1(N int, K int, r int, c int) float64 {
+	dp := make([][][]float64, N)
+	for i := 0; i < N; i++ {
+		dp[i] = make([][]float64, N)
+		for j := 0; j < N; j++ {
+			dp[i][j] = make([]float64, 101)
+		}
+	}
+	return prob(N, K, r, c, 0, dp)
+}
+
+var dirs = []struct{ i, j int }{{-2, -1}, {-2, 1}, {2, -1}, {2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}}
+
+func knightProbability2(n, k, row, column int) float64 {
+	per := make([][][]float64, k+1)
+	for i := range per {
+		per[i] = make([][]float64, n)
+		for j := range per[i] {
+			per[i][j] = make([]float64, n)
+		}
+	}
+
+	return dfs(per, n, row, column, k)
+}
+
+func dfs(per [][][]float64, n, r, c, s int) float64 {
+	if r < 0 || r >= n || c < 0 || c >= n || s < 0 {
+		return 0
+	}
+
+	if s == 0 {
+		return 1.0
+	}
+	if per[s][r][c] != 0 {
+		return per[s][r][c]
+	}
+	for _, v := range dirs {
+		nextR, nextC := r+v.i, c+v.j
+		per[s][r][c] = per[s][r][c] + dfs(per, n, nextR, nextC, s-1)/8
+	}
+	return per[s][r][c]
+}

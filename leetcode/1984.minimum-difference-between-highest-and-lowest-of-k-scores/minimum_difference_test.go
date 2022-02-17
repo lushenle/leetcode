@@ -60,6 +60,22 @@ func Test_minimumDifference(t *testing.T) {
 			}
 		})
 	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := minimumDifference1(tt.args.nums, tt.args.k); got != tt.want {
+				t.Errorf("minimumDifference() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := minimumDifference2(tt.args.nums, tt.args.k); got != tt.want {
+				t.Errorf("minimumDifference() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }
 
 func Test_abs(t *testing.T) {

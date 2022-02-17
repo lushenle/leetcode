@@ -2,11 +2,7 @@
 
 package zeller
 
-import (
-	"math"
-)
-
-func zeller(year, month, day int) float64 {
+func zeller(year, month, day int) int {
 	if month == 1 {
 		month = 13
 		year = year - 1
@@ -19,9 +15,7 @@ func zeller(year, month, day int) float64 {
 
 	c := year / 100
 	year = year % 100
-	w := math.Ceil(float64((year + (year / 4) + (c / 4) - 2*c + (26 * (month + 1) / 10) + day + 700 - 1) % 7))
-
-	return w
+	return (year + (year / 4) + (c / 4) - 2*c + (26 * (month + 1) / 10) + day + 700 - 1) % 7
 }
 
 //func main() {

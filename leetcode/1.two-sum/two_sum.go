@@ -20,9 +20,8 @@ func twoSum(nums []int, target int) []int {
 	for k, v := range nums {
 		if i, ok := m[target-v]; ok {
 			return []int{i, k}
-		} else {
-			m[v] = k
 		}
+		m[v] = k
 	}
 
 	return nil

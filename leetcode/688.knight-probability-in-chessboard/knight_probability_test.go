@@ -32,4 +32,20 @@ func Test_knightProbability(t *testing.T) {
 			}
 		})
 	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := knightProbability1(tt.args.n, tt.args.k, tt.args.row, tt.args.column); got != tt.want {
+				t.Errorf("knightProbability() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := knightProbability2(tt.args.n, tt.args.k, tt.args.row, tt.args.column); got != tt.want {
+				t.Errorf("knightProbability() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }

@@ -17,7 +17,7 @@ func (it *Item) IsDoll() bool {
 func findDiamond(item Item) Item {
 	if item.IsDoll() {
 		return findDiamond(*item.Child)
-	} else {
-		return item
 	}
+
+	return item
 }
