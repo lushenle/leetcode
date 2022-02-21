@@ -2,7 +2,7 @@ package leetcode
 
 func findCenter1(edges [][]int) int {
 	var nums []int
-	m := make(map[int]int)
+	m := make(map[int]int, 4)
 	nums = append(nums, edges[0][0], edges[0][1], edges[1][0], edges[1][1])
 
 	for _, v := range nums {
