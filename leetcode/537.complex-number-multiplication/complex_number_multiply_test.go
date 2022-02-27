@@ -54,7 +54,7 @@ func Test_parse(t *testing.T) {
 			name:  "testParse01",
 			args:  args{s: "1+-1i"},
 			want:  1,
-			want1: 1,
+			want1: -1,
 		},
 		{
 			name:  "testParse01",
