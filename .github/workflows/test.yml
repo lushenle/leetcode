@@ -28,6 +28,7 @@ jobs:
 
     - name: Test
       run: |
+        go clean -testcache
         go test -race -coverprofile=coverage.out -covermode=atomic ./... -v
 
     - name: Upload coverage to Codecov
