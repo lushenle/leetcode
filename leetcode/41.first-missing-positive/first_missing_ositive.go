@@ -14,3 +14,21 @@ func firstMissingPositive(nums []int) int {
 
 	return len(nums) + 1
 }
+
+func firstMissingPositive1(nums []int) int {
+	// nums[idx] == idx+1
+	for i := 0; i < len(nums); i++ {
+		for 0 <= nums[i]-1 && nums[i]-1 < len(nums) && nums[i] != nums[nums[i]-1] {
+			nums[i], nums[nums[i]-1] = nums[nums[i]-1], nums[i]
+		}
+	}
+
+	// 第一个不存在的 idx+1 就是答案
+	for idx := range nums {
+		if nums[idx] != idx+1 {
+			return idx + 1
+		}
+	}
+
+	return len(nums) + 1
+}
