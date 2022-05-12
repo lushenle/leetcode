@@ -22,11 +22,7 @@ func (ds *DetectSquares) Add(point []int) {
 	x, y := point[0], point[1]
 
 	if _, ok1 := ds.Point[x]; ok1 {
-		if _, ok2 := ds.Point[x][y]; ok2 {
-			ds.Point[x][y]++
-		} else {
-			ds.Point[x][y] = 1
-		}
+		ds.Point[x][y] += 1
 	} else {
 		ds.Point[x] = map[int]int{}
 		ds.Point[x][y] = 1
