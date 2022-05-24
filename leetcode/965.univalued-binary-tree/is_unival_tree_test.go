@@ -39,4 +39,12 @@ func Test_isUnivalTree(t *testing.T) {
 			}
 		})
 	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := isUnivalTree1(tt.args.root); got != tt.want {
+				t.Errorf("isUnivalTree() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }

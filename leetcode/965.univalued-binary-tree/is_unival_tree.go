@@ -19,3 +19,20 @@ func isUnivalTree(root *TreeNode) bool {
 
 	return isUnivalTree(root.Left) && isUnivalTree(root.Right)
 }
+
+func isUnivalTree1(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+
+	val := root.Val
+	var dfs func(node *TreeNode) bool
+	dfs = func(node *TreeNode) bool {
+		if node != nil {
+			return node.Val == val && dfs(node.Left) && dfs(node.Right)
+		}
+		return true
+	}
+
+	return dfs(root)
+}
