@@ -4,7 +4,7 @@ import "sort"
 
 func cutOffTree(forest [][]int) int {
 	m, n := len(forest), len(forest[0])
-	trees := [][]int{}
+	var trees [][]int
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
 			if forest[i][j] > 1 {
