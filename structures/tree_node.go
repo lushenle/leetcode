@@ -62,3 +62,20 @@ func Tree2Postorder(root *TreeNode) []int {
 
 	return res
 }
+
+// Tree2Inorder converting a binary tree into an inorder slice
+func Tree2Inorder(root *TreeNode) []int {
+	if root == nil {
+		return nil
+	}
+
+	if root.Left == nil && root.Right == nil {
+		return []int{root.Val}
+	}
+
+	res := Tree2Inorder(root.Left)
+	res = append(res, root.Val)
+	res = append(res, Tree2Inorder(root.Right)...)
+
+	return res
+}
