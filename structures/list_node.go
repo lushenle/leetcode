@@ -76,10 +76,3 @@ func Ints2ListWithCycle(nums []int, pos int) *ListNode {
 	tail.Next = c
 	return head
 }
-
-// TreeNode definition for a binary tree node
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
