@@ -8,8 +8,7 @@ import (
 type scope map[string]int
 
 const (
-	let int = iota
-	add
+	add = iota + 1
 	mult
 )
 
@@ -21,7 +20,6 @@ func evaluate(expression string) int {
 
 	switch {
 	case strings.HasPrefix(expression, "let"):
-		op = let
 		return parseLet(expression[4:])
 	case strings.HasPrefix(expression, "add"):
 		op = add
